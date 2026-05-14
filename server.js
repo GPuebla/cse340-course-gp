@@ -5,7 +5,7 @@ import path from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Define the the application environment
+// Define the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
 
 // Define the port number the server will listen on
@@ -31,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /**
  * Routes
  */
+// async: prepared for future database queries
 app.get('/', async (req, res) => {
     const title = 'Home';
     res.render('home', { title });
@@ -52,6 +53,6 @@ app.get('/categories', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running at http://127.0.0.1:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
   console.log(`Environment: ${NODE_ENV}`);
 });

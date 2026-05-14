@@ -210,30 +210,6 @@ main {
   padding: var(--sp-10) var(--pad-x) var(--sp-12);
 }
 
-/*
- * Organizations / Projects / Categories pages have no <main>.
- * Their content (h2, p, ul) sits directly inside <body>.
- * These rules center and pad those loose children.
- */
-body > h2,
-body > p {
-  width: 100%;
-  max-width: var(--max-w);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--pad-x);
-  padding-right: var(--pad-x);
-}
-
-body > h2 {
-  padding-top: var(--sp-10);
-  padding-bottom: var(--sp-4);
-}
-
-body > p {
-  padding-top: var(--sp-10);
-  padding-bottom: var(--sp-2);
-}
 
 
 /* ─────────────────────────────────────────────────────────────
@@ -316,21 +292,18 @@ main > p {
 /* ─────────────────────────────────────────────────────────────
    §8  CONTENT LIST
    Shared by Organizations, Projects, and Categories pages.
-   HTML: body > ul > li  (with or without an <img> inside)
+   HTML: main > ul > li  (with or without an <img> inside)
    ───────────────────────────────────────────────────────────── */
-body > ul {
+main > ul {
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--sp-4);
-  width: 100%;
-  max-width: var(--max-w);
-  margin: var(--sp-2) auto var(--sp-12);
-  padding: 0 var(--pad-x);
+  margin-top: var(--sp-2);
 }
 
 /* Every item is a card */
-body > ul > li {
+main > ul > li {
   display: flex;
   align-items: center;
   gap: var(--sp-4);
@@ -345,14 +318,14 @@ body > ul > li {
   transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
-body > ul > li:hover {
+main > ul > li:hover {
   box-shadow: var(--sh-md);
   border-color: var(--c-primary-ring);
   transform: translateY(-2px);
 }
 
 /* ── Organizations: items that contain an <img> (logo + name + email) */
-body > ul > li > img {
+main > ul > li > img {
   width: 60px;
   height: 60px;
   object-fit: contain;
@@ -363,7 +336,7 @@ body > ul > li > img {
   border: 1px solid var(--c-border);
 }
 
-body > ul > li > strong {
+main > ul > li > strong {
   font-size: var(--tx-base);
   font-weight: 600;
   color: var(--c-text);
@@ -374,12 +347,12 @@ body > ul > li > strong {
  * left-border accent to distinguish them visually.
  * Uses CSS :has() — supported in all modern browsers (2023+).
  */
-body > ul > li:not(:has(img)) {
+main > ul > li:not(:has(img)) {
   border-left: 4px solid var(--c-primary);
   border-radius: 0 var(--r-lg) var(--r-lg) 0;
 }
 
-body > ul > li:not(:has(img)):hover {
+main > ul > li:not(:has(img)):hover {
   transform: translateX(3px) translateY(0);
 }
 
@@ -615,7 +588,7 @@ textarea { resize: vertical; min-height: 120px; }
 /* ── sm: 640 px */
 @media (min-width: 640px) {
   /* Two-column card grid on tablets */
-  body > ul {
+  main > ul {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -652,7 +625,7 @@ textarea { resize: vertical; min-height: 120px; }
   :root { --pad-x: var(--sp-8); }
 
   /* Three-column card grid on desktop */
-  body > ul {
+  main > ul {
     grid-template-columns: repeat(3, 1fr);
   }
 
