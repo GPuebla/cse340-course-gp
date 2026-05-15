@@ -4,9 +4,17 @@
     <ul>
         <% projects.forEach(project => { %>
             <li>
-                <strong><%= project.name %></strong>: <%= project.description %>
+                <%= new Date(project.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                }) %>:
+                
+                <%= project.title %>
+                
+                (<%= project.organization_name %>)
             </li>
-        <% }); %>
+        <% }) %>
     </ul>
 </main>
 <%- include('partials/footer') %>
