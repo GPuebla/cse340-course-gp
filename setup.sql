@@ -85,3 +85,38 @@ FROM projects p
 JOIN organizations o
 ON p.organization_id = o.organization_id
 ORDER BY p.date;
+
+-- @block Categories Table
+-- ========================================
+-- Categories Table
+-- ========================================
+CREATE TABLE IF NOT EXISTS categories (
+    category_id   SERIAL PRIMARY KEY,
+    name          VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- @block Verify
+SELECT * FROM categories;
+
+
+-- @block project_categories Table
+-- ========================================
+-- project_categories Table
+-- ========================================
+CREATE TABLE IF NOT EXISTS project_categories (
+    project_id    INTEGER,
+    category_id   INTEGER,
+    PRIMARY KEY (project_id, category_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+);
+
+-- @block Verify
+SELECT * FROM project_categories;
+
+-- @block Insert Categories
+INSERT INTO categories (name) VALUES
+('Environmental'),
+('Educational'),
+('Community Service'),
+('Health and Wellness');    
