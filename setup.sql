@@ -119,4 +119,32 @@ INSERT INTO categories (name) VALUES
 ('Environmental'),
 ('Educational'),
 ('Community Service'),
-('Health and Wellness');    
+('Health and Wellness');
+
+-- @block Insert project_categories
+INSERT INTO project_categories (project_id, category_id) VALUES
+(1, 2), 
+(2, 3), 
+(3, 1), 
+(4, 2), 
+(5, 4), 
+(6, 3), 
+(7, 1), 
+(8, 3), 
+(9, 2), 
+(10, 3),
+(11, 1), 
+(12, 4),
+(13, 2),
+(14, 3), 
+(15, 3); 
+
+
+-- @block Verify
+SELECT
+    p.title AS project_title,
+    c.name AS category_name
+FROM projects p
+JOIN project_categories pc ON p.project_id = pc.project_id
+JOIN categories c ON pc.category_id = c.category_id
+ORDER BY p.title;
