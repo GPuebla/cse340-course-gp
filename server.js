@@ -17,6 +17,15 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.use((req, res, next) => {
+    console.log(
+        `[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`
+    );
+    next();
+});
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
 
@@ -33,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware to log all incoming requests
 app.use((req, res, next) => {
-    if (NODE_ENV === 'PRODUCTION') {
+    if (NODE_ENV === 'production') {
         console.log(`${req.method} ${req.url}`);
     }
     next(); // Pass control to the next middleware or route
