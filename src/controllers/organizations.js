@@ -9,5 +9,14 @@ const showOrganizationsPage = async (req, res) => {
     res.render('organizations', { title, organizations });
 };
 
+const showOrganizationDetailsPage = async (req, res) => {
+    const organizationId = req.params.id;
+    const organization = await getOrganizationById(organizationId);
+    const title = 'Organization Details';
+
+    res.render('organization-details', { title, organization });
+};
+
+
 // Export any controller functions
-export { showOrganizationsPage };
+export { showOrganizationsPage, showOrganizationDetailsPage };
