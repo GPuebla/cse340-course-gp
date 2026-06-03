@@ -8,7 +8,7 @@ const showProjectsPage = async (req, res) => {
     const projects = await getUpcomingProjects(NUMBER_OF_UPCOMING_PROJECTS);
     const title = 'Upcoming Service Projects';
 
-    res.render('project', { title, projects });
+    res.render('projects', { title, projects });
 };
 
 // Define a controller function for showing project details (if needed)
