@@ -4,13 +4,13 @@
     <p>Here are a few of our partner organizations:</p>
     <ul>
         <% organizations.forEach(org => { %>
-            <a href="/organizations/<%= org.id %>">
-                <li>
+            <li>
+                <a href="/organizations/<%= org.id %>">
                     <img src="/images/<%= org.logo_filename %>" alt="<%= org.name %> logo">
                     <strong><%= org.name %></strong>: <%= org.contact_email %>
-                </li>
-            </a>
-        <% }) %>
+                </a>
+            </li>
+        <% }); %>
     </ul>
 </main>
 <%- include('partials/footer') %>
