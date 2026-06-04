@@ -30,4 +30,15 @@ const getOrganizationDetails = async (organizationId) => {
       return result.rows.length > 0 ? result.rows[0] : null;
 };
 
-export {getAllOrganizations, getOrganizationDetails} 
+const getCategoriesByProjectId = async (projectId) => {
+    const query = `
+        SELECT c.name AS category_name
+        FROM categories c
+        JOIN project_categories pc ON c.category_id = pc.category_id
+        WHERE pc.project_id = $1;
+    `;
+    const result = await db.query(query, [projectId]);
+    return result.rows.map(row => row.category_name);
+}
+
+export {getAllOrganizations, getOrganizationDetails, getCategoriesByProjectId} 

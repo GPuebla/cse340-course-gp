@@ -96,6 +96,15 @@ CREATE TABLE IF NOT EXISTS categories (
 );
 
 -- @block Verify
+ALTER TABLE categories ADD COLUMN description TEXT;
+
+-- @block Insert Categories description
+UPDATE categories SET description = 'Projects focused on environmental conservation and sustainability.' WHERE category_id = 1;
+UPDATE categories SET description = 'Projects aimed at providing educational resources and workshops.' WHERE category_id = 2;
+UPDATE categories SET description = 'Projects that support and strengthen local communities.' WHERE category_id = 3;
+UPDATE categories SET description = 'Projects promoting health, wellness, and quality of life.' WHERE category_id = 4;
+
+-- @block Verify
 SELECT * FROM categories;
 
 
