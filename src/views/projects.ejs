@@ -13,6 +13,9 @@
                 <span class="project-org">
                     <a href="/organizations/<%= project.organization_id %>"><%= project.organization_name %></a>
                 </span>
+                <span class="project-category">
+                    <a href="/categories/<%= project.category_id %>"><%= project.category_name %></a>
+                </span>
             </li>
         <% }) %>
     </ul>

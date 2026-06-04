@@ -24,6 +24,10 @@
                 <dt>Description</dt>
                 <dd><%= projectDetails.description %></dd>
             </div>
+                <div class="detail-row">
+                <dt>Category</dt>
+                <dd><a href="/categories/<%= projectDetails.category_id %>"><%= projectDetails.category_name %></a></dd>
+            </div>
         </dl>
     </div>
 </main>
