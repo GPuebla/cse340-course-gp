@@ -142,9 +142,15 @@ INSERT INTO project_categories (project_id, category_id) VALUES
 
 -- @block Verify
 SELECT
+    p.project_id AS ID,
     p.title AS project_title,
     c.name AS category_name
 FROM projects p
 JOIN project_categories pc ON p.project_id = pc.project_id
 JOIN categories c ON pc.category_id = c.category_id
-ORDER BY p.title;
+ORDER BY p.project_id;
+
+-- @block Insert project_categories
+INSERT INTO project_categories (project_id, category_id) VALUES
+(1, 3), 
+(1, 1);

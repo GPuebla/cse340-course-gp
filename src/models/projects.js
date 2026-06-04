@@ -88,7 +88,7 @@ const getProjectDetailsById = async (projectId) => {
 
     const result = await db.query(sql, [projectId]);
 
-    return result.rows[0];
+    return result.rows;
 };
 
 export {getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetailsById} 
