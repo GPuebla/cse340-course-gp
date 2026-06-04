@@ -577,6 +577,93 @@ textarea { resize: vertical; min-height: 120px; }
 
 
 /* ─────────────────────────────────────────────────────────────
+   §15  PROJECTS
+   ───────────────────────────────────────────────────────────── */
+
+/* Column layout inside project list cards */
+main > ul > li:has(.project-title) {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.project-title {
+  font-size: var(--tx-lg);
+  font-weight: 600;
+  color: var(--c-text);
+  text-decoration: none;
+  line-height: 1.35;
+  margin: var(--sp-2) 0 var(--sp-1);
+}
+
+.project-title:hover {
+  color: var(--c-primary);
+}
+
+.project-org {
+  font-size: var(--tx-sm);
+  color: var(--c-text-muted);
+}
+
+/* Back navigation link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--tx-sm);
+  font-weight: 500;
+  color: var(--c-text-muted);
+  text-decoration: none;
+  margin-bottom: var(--sp-5);
+  transition: color 0.15s ease;
+}
+
+.back-link:hover {
+  color: var(--c-primary);
+  text-decoration: none;
+}
+
+/* Detail page card */
+.project-detail {
+  margin-top: var(--sp-6);
+  max-width: 640px;
+}
+
+.detail-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: var(--sp-4);
+  align-items: baseline;
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.detail-row dt {
+  font-size: var(--tx-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--c-text-muted);
+  padding-top: var(--sp-1);
+}
+
+.detail-row dd {
+  font-size: var(--tx-base);
+  color: var(--c-text);
+  line-height: 1.65;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
    §14  RESPONSIVE BREAKPOINTS  (mobile-first)
    Base styles  → 0 px  (phones)
    sm           → 640 px (large phones / small tablets)

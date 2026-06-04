@@ -1,14 +1,30 @@
 <%- include('partials/header') %>
 <main>
-    <h2><%= projectDetails.title %></h2>
-    <p><strong>Date:</strong> <%= new Date(projectDetails.date).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    }) %></p>
-    <p><strong>Location:</strong> <%= projectDetails.location %></p>
-    <p><strong>Organization:</strong> <a href="/organizations/<%= projectDetails.organization_id %>"><%= projectDetails.organization_name %></a></p>
-    <p><strong>Description:</strong> <%= projectDetails.description %></p>  
+    <a href="/projects" class="back-link">← All Projects</a>
+    <h1><%= projectDetails.title %></h1>
+    <div class="card project-detail">
+        <dl class="detail-list">
+            <div class="detail-row">
+                <dt>Date</dt>
+                <dd><span class="badge"><%= new Date(projectDetails.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                }) %></span></dd>
+            </div>
+            <div class="detail-row">
+                <dt>Location</dt>
+                <dd><%= projectDetails.location %></dd>
+            </div>
+            <div class="detail-row">
+                <dt>Organization</dt>
+                <dd><a href="/organizations/<%= projectDetails.organization_id %>"><%= projectDetails.organization_name %></a></dd>
+            </div>
+            <div class="detail-row">
+                <dt>Description</dt>
+                <dd><%= projectDetails.description %></dd>
+            </div>
+        </dl>
+    </div>
 </main>
 <%- include('partials/footer') %>
-
