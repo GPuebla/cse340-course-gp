@@ -51,6 +51,8 @@ const getUpcomingProjects = async (numberOfProjects) =>{
         FROM projects p
         JOIN organizations o
             ON p.organization_id = o.organization_id
+        JOIN project_categories pc
+            ON p.project_category_id = pc.project_category_id
         JOIN categories c
             ON p.category_id = c.category_id
         WHERE p.date >= CURRENT_DATE
@@ -77,6 +79,8 @@ const getProjectDetailsById = async (projectId) => {
         FROM projects p
         JOIN organizations o
             ON p.organization_id = o.organization_id
+        JOIN project_categories pc
+            ON p.project_category_id = pc.project_category_id
         JOIN categories c
             ON p.category_id = c.category_id
         WHERE p.project_id = $1
