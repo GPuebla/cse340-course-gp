@@ -1,5 +1,5 @@
 // Import any needed model functions (none are needed for the home page, so this is empty)
-import { getAllOrganizations, getOrganizationDetails } from '../models/organizations.js';
+import { getAllOrganizations, getOrganizationDetails, createOrganization } from '../models/organizations.js';
 import { getProjectsByOrganizationId } from '../models/projects.js';
 
 // Define any controller functions
