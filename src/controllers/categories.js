@@ -9,11 +9,11 @@ const showCategoriesPage = async (req, res) => {
 
 const showCategoryDetailsPage = async (req, res) => {
     const categoryId = req.params.id;
-    const categoryDetails = await getCategoryById(categoryId);
+    const category = await getCategoryById(categoryId);
     const projects = await getProjectsByCategoryId(categoryId);
     
     const title = 'Category Details';
-    res.render('category', { title, projects, categoryDetails });
+    res.render('category', { title, projects, category });
 };
 
 export { showCategoriesPage, showCategoryDetailsPage };
