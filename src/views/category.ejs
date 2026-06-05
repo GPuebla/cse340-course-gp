@@ -8,6 +8,17 @@
             <li>
                 <a class="project-title" href="/project/<%= project.project_id %>"><%= project.title %></a>
                 <p><%= project.description %></p>
+
+                <h2>Projects</h2>
+                    <% if (projects.length > 0) { %>
+                        <ul class="category-list">
+                            <% projects.forEach(project => { %>
+                                <li><a href="/project/<%= project.project_id %>"><%= project.title %></a></li>
+                            <% }) %>
+                        </ul>
+                    <% } else { %>
+                        <span>No categories assigned</span>
+                    <% } %>                
             </li>
         <% }) %>
     </ul>
