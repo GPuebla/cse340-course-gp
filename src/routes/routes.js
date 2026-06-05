@@ -10,7 +10,6 @@ const router = express.Router();
 
 router.get('/', showHomePage);
 router.get('/organizations', showOrganizationsPage);
-router.get('/categories/:id', showCategoryDetailsPage);
 router.get('/organizations/:id', showOrganizationDetailsPage);
 router.get('/projects', showProjectsPage);
 router.get('/project/:id', showProjectDetailsPage);
