@@ -1,26 +1,21 @@
 <%- include('partials/header') %>
-<main>
-    <h1><%= title %></h1>
-    <h2><%= category.name %></h2>
-    <p><%= category.description %></p>
-    <ul>
-        <% projects.forEach(project => { %>
-            <li>
-                <a class="project-title" href="/project/<%= project.project_id %>"><%= project.title %></a>
-                <p><%= project.description %></p>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+        <h2>
+            <%= category.name %>
+        </h2>
+        <p>
+            <%= category.description %>
+        </p>
+        <ul>
+            <% projects.forEach(project=> { %>
+                <li><a href="/project/<%= project.project_id %>">
+                        <%= project.title %>
+                    </a></li>
 
-                <h2>Projects</h2>
-                    <% if (projects.length > 0) { %>
-                        <ul class="category-list">
-                            <% projects.forEach(project => { %>
-                                <li><a href="/project/<%= project.project_id %>"><%= project.title %></a></li>
-                            <% }) %>
-                        </ul>
-                    <% } else { %>
-                        <span>No categories assigned</span>
-                    <% } %>                
-            </li>
-        <% }) %>
-    </ul>
-</main>
-<%- include('partials/footer') %>
+                <% }) %>
+        </ul>
+    </main>
+    <%- include('partials/footer') %>
