@@ -1,6 +1,6 @@
--- @block Organization Table
+-- @block Organizations Table
 -- ========================================
--- Organization Table
+-- Organizations Table
 -- ========================================
 CREATE TABLE IF NOT EXISTS organizations (
     organization_id SERIAL PRIMARY KEY,

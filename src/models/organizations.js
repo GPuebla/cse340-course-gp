@@ -51,7 +51,7 @@ const getCategoriesByProjectId = async (projectId) => {
  */
 const createOrganization = async (name, description, contactEmail, logoFilename) => {
     const query = `
-      INSERT INTO organization (name, description, contact_email, logo_filename)
+      INSERT INTO organizations (name, description, contact_email, logo_filename)
       VALUES ($1, $2, $3, $4)
       RETURNING organization_id
     `;
