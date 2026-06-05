@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get('/', showHomePage);
 router.get('/organizations', showOrganizationsPage);
-router.get('/organizations/:id', showOrganizationDetailsPage);
+router.get('/organization/:id', showOrganizationDetailsPage);
 // Route for new organization page
 router.get('/new-organization', showNewOrganizationForm);
 // Route to handle new organization form submission
