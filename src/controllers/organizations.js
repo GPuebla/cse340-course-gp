@@ -1,6 +1,7 @@
 // Import any needed model functions (none are needed for the home page, so this is empty)
 import { getAllOrganizations, getOrganizationDetails, createOrganization } from '../models/organizations.js';
 import { getProjectsByOrganizationId } from '../models/projects.js';
+import { body, validationResult } from 'express-validator';
 
 // Define validation and sanitization rules for organization form
 // Define validation rules for organization form
