@@ -5,6 +5,7 @@ import { showOrganizationsPage , showOrganizationDetailsPage, showNewOrganizatio
 import { showProjectsPage, showProjectDetailsPage } from '../controllers/projects.js';
 import { showCategoriesPage, showCategoryDetailsPage } from '../controllers/categories.js';
 import { testErrorPage } from '../controllers/errors.js';
+import { body, validationResult } from 'express-validator';
 
 const router = express.Router();
 
