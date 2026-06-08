@@ -508,6 +508,16 @@ footer p {
    §12  FORMS
    Ready for future pages — no extra markup needed.
    ───────────────────────────────────────────────────────────── */
+.form-group {
+  margin-bottom: var(--sp-5);
+}
+
+.form-actions {
+  margin-top: var(--sp-6);
+  display: flex;
+  gap: var(--sp-3);
+}
+
 label {
   display: block;
   font-size: var(--tx-sm);
