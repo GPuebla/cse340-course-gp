@@ -8,7 +8,7 @@ import { showOrganizationsPage ,
         organizationValidation,
          showEditOrganizationForm,
           processEditOrganizationForm } from '../controllers/organizations.js';
-import { showProjectsPage, showProjectDetailsPage } from '../controllers/projects.js';
+import { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm } from '../controllers/projects.js';
 import { showCategoriesPage, showCategoryDetailsPage } from '../controllers/categories.js';
 import { testErrorPage } from '../controllers/errors.js';
 import { body, validationResult } from 'express-validator';
@@ -27,8 +27,13 @@ router.get('/edit-organization/:id', showEditOrganizationForm);
 // Route to handle the edit organization form submission
 router.post('/edit-organization/:id', organizationValidation, processEditOrganizationForm);
 
+
 router.get('/projects', showProjectsPage);
 router.get('/project/:id', showProjectDetailsPage);
+router.get('/new-project', showNewProjectForm);
+router.post('/new-project', processNewProjectForm);
+
+
 router.get('/categories', showCategoriesPage);
 router.get('/category/:id', showCategoryDetailsPage);
 
