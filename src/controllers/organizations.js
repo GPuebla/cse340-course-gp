@@ -1,5 +1,5 @@
 // Import any needed model functions (none are needed for the home page, so this is empty)
-import { getAllOrganizations, getOrganizationDetails, createOrganization } from '../models/organizations.js';
+import { getAllOrganizations, getOrganizationDetails, createOrganization, updateOrganization } from '../models/organizations.js';
 import { getProjectsByOrganizationId } from '../models/projects.js';
 import { body, validationResult } from 'express-validator';
 
@@ -81,6 +81,18 @@ const showEditOrganizationForm = async (req, res) => {
 const processEditOrganizationForm = async (req, res) => {
     const { name, description, contactEmail, logoFilename } = req.body;
     const organizationId = req.params.id;
+    // Check for validation errors
+    const results = validationResult(req);
+
+        if (!results.isEmpty()) {
+        // Validation failed - loop through errors
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+
+        // Redirect back to the edit organization form
+        return res.redirect('/edit-organization/' + req.params.id);
+        }
 
     // Update the organization in the database
     await updateOrganization(organizationId, name, description, contactEmail, logoFilename);
@@ -88,6 +100,8 @@ const processEditOrganizationForm = async (req, res) => {
     //set a success message and redirect to the organization details page
     req.flash('success', 'Organization updated successfully!');
     res.redirect(`/organization/${organizationId}`);
+
+    
 };
 
 
