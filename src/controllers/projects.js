@@ -2,6 +2,7 @@
 import { getProjectDetailsById, getUpcomingProjects, createProject } from '../models/projects.js';
 import { getCategoriesByProjectId } from '../models/categories.js';
 import { getAllOrganizations } from '../models/organizations.js';
+import { body, validationResult } from 'express-validator';
 
 const NUMBER_OF_UPCOMING_PROJECTS = 5
 
@@ -36,7 +37,7 @@ const processNewProjectForm = async (req, res) => {
     try {
         const projectId = await createProject(organizationId, title, description, location, date);
         req.flash('success', 'Project added successfully!');
-        res.redirect(`/projects/${projectId}`); 
+        res.redirect(`/project/${projectId}`); 
     } catch (error) {
         console.error('Error creating project:', error);
         req.flash('error', 'Failed to add project.');
