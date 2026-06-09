@@ -6,10 +6,10 @@
     <div class="form-group">
       <label for="name">Project Name</label>
         <select name="projectId" id="projectId" required>
-        <option value="">Select a project</option>
+        <option value="">Select an organization</option>
         
-        <% projects.forEach(org => { %>
-            <option value="<%= org.project_id %>">
+        <% organizations.forEach(org => { %>
+            <option value="<%= org.organizationId %>">
             <%= org.name %>
             </option>
         <% }) %>
