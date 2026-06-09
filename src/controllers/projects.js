@@ -1,7 +1,7 @@
 // Import any needed model functions
 import { getProjectDetailsById, getUpcomingProjects, createProject } from '../models/projects.js';
 import { getCategoriesByProjectId } from '../models/categories.js';
-import { getAllorganizations } from '../models/organizations.js';
+import { getAllOrganizations } from '../models/organizations.js';
 
 const NUMBER_OF_UPCOMING_PROJECTS = 5
 
@@ -24,7 +24,7 @@ const showProjectDetailsPage = async (req, res) => {
 };
 
 const showNewProjectForm = async (req, res) => {
-    const organizations = await getAllorganizations();
+    const organizations = await getAllOrganizations();
     const title = 'Create New Project';
     
     res.render('new-project', { title, organizations });
