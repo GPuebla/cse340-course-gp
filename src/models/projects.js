@@ -102,5 +102,18 @@ const createProject = async (organizationId, title, description, location, date)
     return result.rows[0].project_id;
 };
 
+const updateProject = async (projectId, organizationId, title, description, location, date) => {
+    const query = `
+        UPDATE projects
+        SET organization_id = $1,
+            title = $2,
+            description = $3,
+            location = $4,
+            date = $5
+        WHERE project_id = $6
+    `;
+    const queryParams = [organizationId, title, description, location, date, projectId];
+    await db.query(query, queryParams);
+};
 
-export {getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetailsById, createProject} 
+export {getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetailsById, createProject, updateProject}; 

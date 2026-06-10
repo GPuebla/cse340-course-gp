@@ -1,5 +1,5 @@
 // Import any needed model functions
-import { getProjectDetailsById, getUpcomingProjects, createProject } from '../models/projects.js';
+import { getProjectDetailsById, getUpcomingProjects, createProject, updateProject } from '../models/projects.js';
 import { getCategoriesByProjectId } from '../models/categories.js';
 import { getAllOrganizations } from '../models/organizations.js';
 import { body, validationResult } from 'express-validator';
@@ -78,6 +78,43 @@ const processNewProjectForm = async (req, res) => {
     }
 };
 
+const showEditProjectForm = async (req, res) => {
+    const projectId = req.params.projectId;
+    const projectDetails = await getProjectDetailsById(projectId);
+    const organizations = await getAllOrganizations();
+
+    const title = 'Edit Project';
+    res.render('edit-project', { title, projectDetails, organizations });
+};
+
+const processEditProjectForm = async (req, res) => {
+    const { organizationId, title, description, location, date } = req.body;
+    const projectId = req.params.projectId;
+        
+    // Check for validation errors
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        // Loop through validation errors and flash them
+        errors.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+
+        // Redirect back to the edit project form
+        return res.redirect(`/edit-project/${projectId}`);
+        }
+
+    try {
+        await updateProject(projectId, organizationId, title, description, location, date);
+        req.flash('success', 'Project updated successfully!');
+        res.redirect(`/project/${projectId}`); 
+    } catch (error) {
+        console.error('Error updating project:', error);
+        req.flash('error', 'Failed to update project.');
+        res.redirect(`/edit-project/${projectId}`);
+    }  
+    
+};
+
 
 // Export any controller functions
-export { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, projectValidation };
+export { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, processEditProjectForm, projectValidation, showEditProjectForm };
