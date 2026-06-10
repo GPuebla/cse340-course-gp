@@ -111,9 +111,21 @@ const updateProject = async (projectId, organizationId, title, description, loca
             location = $4,
             date = $5
         WHERE project_id = $6
+        RETURNING project_id;
     `;
+
     const queryParams = [organizationId, title, description, location, date, projectId];
-    await db.query(query, queryParams);
+    const result = await db.query(query, queryParams);
+
+    if (result.rowCount === 0) {
+        throw new Error('Project not found');
+    }
+
+    if (process.env.ENABLE_SQL_LOGGING === 'true') {
+        console.log('Updated project with ID:', projectId);
+        }
+
+    return result.rows[0].project_id;
 };
 
 export {getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetailsById, createProject, updateProject}; 

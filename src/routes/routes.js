@@ -44,8 +44,8 @@ router.post('/project/:projectId/assign-categories', processAssignCategoriesForm
 // Route to handle new project form submission
 router.get('/new-project', showNewProjectForm);
 router.post('/new-project', projectValidation, processNewProjectForm);
-router.get('/edit-project/:id', showEditProjectForm);
-router.post('/edit-project/:id', projectValidation, processEditProjectForm);
+router.get('/edit-project/:projectId', showEditProjectForm);
+router.post('/edit-project/:projectId', projectValidation, processEditProjectForm);
 
 
 router.get('/categories', showCategoriesPage);
