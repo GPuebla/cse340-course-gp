@@ -18,6 +18,11 @@ import { showProjectsPage,
 import { showCategoriesPage,
           showAssignCategoriesForm ,
           processAssignCategoriesForm,
+          showNewCategoryForm,
+          categoryValidation,
+          processNewCategoryForm,
+          showEditCategoryForm,
+          processEditCategoryForm,
            showCategoryDetailsPage } from '../controllers/categories.js';
 import { testErrorPage } from '../controllers/errors.js';
 
@@ -50,6 +55,10 @@ router.post('/edit-project/:projectId', projectValidation, processEditProjectFor
 
 router.get('/categories', showCategoriesPage);
 router.get('/category/:id', showCategoryDetailsPage);
+router.get('/new-category', showNewCategoryForm);
+router.post('/new-category', categoryValidation, processNewCategoryForm);
+router.get('/edit-category/:id', showEditCategoryForm);
+router.post('/edit-category/:id', categoryValidation, processEditCategoryForm); 
 
 
 

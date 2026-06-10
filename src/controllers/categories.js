@@ -1,5 +1,5 @@
 // Import any needed model functions
-import { getAllCategories, getCategoryById, getProjectsByCategoryId, getCategoriesByProjectId, updateCategoryAssignments } from '../models/categories.js';
+import { getAllCategories, getCategoryById, getProjectsByCategoryId, getCategoriesByProjectId, updateCategoryAssignments, updateCategory, createCategory } from '../models/categories.js';
 import { getProjectDetailsById } from '../models/projects.js';
 
 const showCategoriesPage = async (req, res) => {
@@ -39,4 +39,45 @@ const processAssignCategoriesForm = async (req, res) => {
     res.redirect(`/project/${projectId}`);
 };
 
-export { showCategoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm };
+const showNewCategoryForm = async (req, res) => {
+    const title = 'Create New Category';
+    res.render('new-category', { title });
+};
+
+const processNewCategoryForm = async (req, res) => {
+    const { name, description } = req.body;
+    // Check for validation errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        // Loop through validation errors and flash them
+        errors.array().forEach((error) => {
+            req.flash('error', error.msg);
+        }); 
+        // Redirect back to the new category form
+        return res.redirect('/new-category');
+    }
+    try {
+        const categoryId = await createCategory(name, description);
+        req.flash('success', 'Category added successfully!');
+        res.redirect(`/category/${categoryId}`); 
+    }catch (error) {
+        console.error('Error creating category:', error);
+        req.flash('error', 'Failed to add category.');
+        res.redirect('/new-category');
+    }
+};
+
+const showEditCategoryForm = async (req, res) => {
+    const categoryId = req.params.category_id;
+    const category = await getCategoryById(categoryId);
+    
+    
+}
+
+const processEditCategoryForm = async (req, res) =>{}
+
+export { showCategoriesPage,
+        showCategoryDetailsPage,
+        showAssignCategoriesForm,
+        processAssignCategoriesForm
+    };
