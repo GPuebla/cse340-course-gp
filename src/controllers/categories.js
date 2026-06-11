@@ -1,4 +1,4 @@
-import { validationResult } from 'express-validator';
+
 // Import any needed model functions
 import {
     getAllCategories, getCategoryById,
@@ -110,23 +110,20 @@ const processEditCategoryForm = async (req, res) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        // Loop through validation errors and flash them
         errors.array().forEach((error) => {
             req.flash('error', error.msg);
         });
-        // Redirect back to the new category form
-        return res.redirect('/new-category');
+        return res.redirect(`/category/edit/${categoryId}`);
     }
     try {
-        const categoryId = await createCategory(name, description);
-        req.flash('success', 'Category added successfully!');
+        await updateCategory(categoryId, name, description);
+        req.flash('success', 'Category updated successfully!');
         res.redirect(`/category/${categoryId}`);
     } catch (error) {
-        console.error('Error creating category:', error);
-        req.flash('error', 'Failed to add category.');
-        res.redirect('/new-category');
+        console.error('Error updating category:', error);
+        req.flash('error', 'Failed to update category.');
+        res.redirect(`/category/edit/${categoryId}`);
     }
-
 };
 
 export {
@@ -138,6 +135,5 @@ export {
     categoryValidation,
     processNewCategoryForm,
     showEditCategoryForm,
-    categoryValidation,
     processEditCategoryForm
 };
