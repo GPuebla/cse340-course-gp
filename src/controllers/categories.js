@@ -70,7 +70,6 @@ const showNewCategoryForm = async (req, res) => {
 
 const processNewCategoryForm = async (req, res) => {
     const { name, description } = req.body;
-
     // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -81,7 +80,6 @@ const processNewCategoryForm = async (req, res) => {
         // Redirect back to the new category form
         return res.redirect('/new-category');
     }
-
     try {
         const categoryId = await createCategory(name, description);
         req.flash('success', 'Category added successfully!');
@@ -98,12 +96,38 @@ const showEditCategoryForm = async (req, res) => {
     const category = await getCategoryById(categoryId);
 
     const title = 'Edit Category';
-    res.render('')
+    if (!category) {
+        req.flash('error', 'Category not found.');
+        return res.redirect('/categories');
+    }
 
+    res.render('edit-category', { title, category });
+};
 
-}
+const processEditCategoryForm = async (req, res) => {
+    const { name, description } = req.body;
+    const categoryId = req.params.categoryId;
 
-const processEditCategoryForm = async (req, res) => { }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        // Loop through validation errors and flash them
+        errors.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+        // Redirect back to the new category form
+        return res.redirect('/new-category');
+    }
+    try {
+        const categoryId = await createCategory(name, description);
+        req.flash('success', 'Category added successfully!');
+        res.redirect(`/category/${categoryId}`);
+    } catch (error) {
+        console.error('Error creating category:', error);
+        req.flash('error', 'Failed to add category.');
+        res.redirect('/new-category');
+    }
+
+};
 
 export {
     showCategoriesPage,
