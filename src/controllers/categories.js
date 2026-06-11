@@ -70,6 +70,7 @@ const showNewCategoryForm = async (req, res) => {
 
 const processNewCategoryForm = async (req, res) => {
     const { name, description } = req.body;
+
     // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -80,6 +81,7 @@ const processNewCategoryForm = async (req, res) => {
         // Redirect back to the new category form
         return res.redirect('/new-category');
     }
+
     try {
         const categoryId = await createCategory(name, description);
         req.flash('success', 'Category added successfully!');
@@ -94,6 +96,9 @@ const processNewCategoryForm = async (req, res) => {
 const showEditCategoryForm = async (req, res) => {
     const categoryId = req.params.category_id;
     const category = await getCategoryById(categoryId);
+
+    const title = 'Edit Category';
+    res.render('')
 
 
 }
