@@ -1,14 +1,17 @@
 <%- include('partials/header') %>
-<main>
-    <h1><%= title %></h1>
-    <ul>
-        <% categories.forEach(category => { %>
-            <li>
-                <a href="/category/<%= category.category_id %>">
-                    <%= category.name %>
-                </a>
-            </li>
-        <% }); %>
-    </ul>
-</main>
-<%- include('partials/footer') %>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+        <ul>
+            <% categories.forEach(category=> { %>
+                <li>
+                    <a href="/category/<%= category.category_id %>">
+                        <%= category.name %>
+                    </a>
+                </li>
+                <% }); %>
+        </ul>
+        <a href="/new-category" class="btn btn-primary">Create New Category</a>
+    </main>
+    <%- include('partials/footer') %>

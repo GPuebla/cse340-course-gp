@@ -16,12 +16,10 @@ const categoryValidation = [
         .trim()
         .notEmpty()
         .withMessage('Category name is required')
-        .isLength({ min: 3, max: 150 })
+        .isLength({ min: 3, max: 100 })
         .withMessage('Category name must be between 3 and 150 characters'),
     body('description')
         .trim()
-        .notEmpty()
-        .withMessage('Category description is required')
         .isLength({ max: 500 })
         .withMessage('Category description cannot exceed 500 characters'),
 ];
@@ -33,7 +31,7 @@ const showCategoriesPage = async (req, res) => {
 };
 
 const showCategoryDetailsPage = async (req, res) => {
-    const categoryId = req.params.id;
+    const categoryId = req.params.categoryId;
     const category = await getCategoryById(categoryId);
     const projects = await getProjectsByCategoryId(categoryId);
 
@@ -92,7 +90,7 @@ const processNewCategoryForm = async (req, res) => {
 };
 
 const showEditCategoryForm = async (req, res) => {
-    const categoryId = req.params.category_id;
+    const categoryId = req.params.id;
     const category = await getCategoryById(categoryId);
 
     const title = 'Edit Category';
@@ -122,7 +120,7 @@ const processEditCategoryForm = async (req, res) => {
     } catch (error) {
         console.error('Error updating category:', error);
         req.flash('error', 'Failed to update category.');
-        res.redirect(`/category/edit/${categoryId}`);
+        res.redirect(`/edit-category/${categoryId}`);
     }
 };
 
