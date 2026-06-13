@@ -33,8 +33,13 @@ const showCategoriesPage = async (req, res) => {
 const showCategoryDetailsPage = async (req, res) => {
     const categoryId = req.params.categoryId;
     const category = await getCategoryById(categoryId);
-    const projects = await getProjectsByCategoryId(categoryId);
 
+    if (!category) {
+        req.flash('error', 'Category not found.');
+        return res.redirect('/categories');
+    }
+
+    const projects = await getProjectsByCategoryId(categoryId);
     const title = 'Category Details';
     res.render('category', { title, projects, category });
 };
