@@ -31,7 +31,7 @@ const showCategoriesPage = async (req, res) => {
 };
 
 const showCategoryDetailsPage = async (req, res) => {
-    const categoryId = req.params.categoryId;
+    const categoryId = req.params.id;
     const category = await getCategoryById(categoryId);
 
     if (!category) {
