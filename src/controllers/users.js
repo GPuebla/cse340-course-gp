@@ -31,7 +31,7 @@ const processLoginForm = async (req, res) => {
         if (user) {
             req.session.user = user;
             req.flash('success', 'Login successful!');
-            res.redirect('/');
+            res.redirect('/dashboard');
         } else {
             req.flash('error', 'Invalid email or password.');
             res.redirect('/login');
