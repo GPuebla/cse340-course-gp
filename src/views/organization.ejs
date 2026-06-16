@@ -13,8 +13,10 @@
             <li><a href="/project/<%= project.project_id %>"><%= project.title %></a></li>
         <% }) %>
     </ul>
+    <% if (user && user.role_name === 'admin') { %>
     <div class="form-actions">
       <a href="/edit-organization/<%= organizationDetails.organization_id %>" class="btn btn-primary">Edit Organization</a>
     </div>
+    <% } %>
 </main>
 <%- include('partials/footer') %>

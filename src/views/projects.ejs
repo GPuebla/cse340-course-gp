@@ -17,9 +17,11 @@
         <% }) %>
     </ul>
 
+    <% if (user && user.role_name === 'admin') { %>
     <div class="form-actions">
       <a href="/new-project" class="btn btn-primary">Add a New Service Project</a>
     </div>
+    <% } %>
 
 </main>
 <%- include('partials/footer') %>

@@ -168,25 +168,38 @@ nav {
   background: var(--c-surface);
   border-bottom: 1px solid var(--c-border);
   box-shadow: var(--sh-sm);
-
-  /* vertically center the link list */
   display: flex;
   align-items: center;
 }
 
-nav ul {
-  list-style: none;
+.nav-container {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;   /* prevents overflow on small screens */
-  gap: var(--sp-1);
+  justify-content: space-between;
   width: 100%;
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: var(--sp-2) var(--pad-x);
+  padding: 0 var(--pad-x);
+  gap: var(--sp-4);
+  flex-wrap: wrap;
 }
 
-nav ul li a {
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}
+
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+}
+
+.nav-links li a {
   display: block;
   padding: var(--sp-2) var(--sp-3);
   font-size: var(--tx-sm);
@@ -194,34 +207,29 @@ nav ul li a {
   color: var(--c-text-muted);
   text-decoration: none;
   border-radius: var(--r-md);
-  transition: color 0.15s ease, background-color 0.15s ease;
+  transition: all 0.15s ease;
   white-space: nowrap;
 }
 
-nav ul li a:hover {
+.nav-links li a:hover {
   color: var(--c-primary);
   background-color: var(--c-primary-light);
-  text-decoration: none;
 }
 
-/* Visible focus ring for keyboard navigation (WCAG 2.4.7) */
-nav ul li a:focus-visible {
+.nav-links li a:focus-visible {
   outline: 2px solid var(--c-primary);
   outline-offset: 2px;
 }
 
-/*
- * Style the first nav link as a brand anchor.
- * "Home" becomes the visual logo text on the left.
- */
-nav ul li:first-child a {
+/* Brand styling for the first link */
+.nav-links li:first-child a {
   font-size: var(--tx-base);
   font-weight: 700;
   color: var(--c-primary);
   margin-right: var(--sp-4);
 }
 
-nav ul li:first-child a:hover {
+.nav-links li:first-child a:hover {
   background: transparent;
   color: var(--c-primary-dark);
 }
@@ -729,12 +737,12 @@ main > ul > li:has(.project-title) {
   /* Widen horizontal padding as screens grow */
   :root { --pad-x: var(--sp-6); }
 
-  nav ul li a {
+  .nav-links li a {
     font-size: var(--tx-base);
     padding: var(--sp-2) var(--sp-4);
   }
 
-  nav ul li:first-child a {
+  .nav-links li:first-child a {
     font-size: var(--tx-lg);
   }
 
