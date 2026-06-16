@@ -4,9 +4,11 @@
     <h2>Dashboard</h2>
     <p>Name: <%= name %></p>
     <p>Username: <%= email %></p>
-</main>
 
-<% if (user && user.role_name === 'admin') { %>
-        <a href="/users" class="btn btn-primary">Go to users</a>
-        <% } %>
-<%- include('partials/footer') %>
+    <% if (user && user.role_name === 'admin') { %>
+            <a href="/users" class="btn btn-primary">Go to users</a>
+            <% } %>
+    <%- include('partials/footer') %>
+
+</main>
+    <%- include('partials/footer') %>
