@@ -4,7 +4,7 @@
             <%= title %>
         </h1>
 
-        <form action="/edit-category/<%= category.categoryId %>" method="POST">
+        <form action="/edit-category/<%= category.category_id %>" method="POST">
             <div class="form-group">
                 <label for="name">Category Name</label>
                 <input type="text" id="name" name="name" required maxlength="150" value="<%= category.name %>" />
