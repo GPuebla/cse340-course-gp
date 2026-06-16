@@ -202,3 +202,6 @@ JOIN roles r ON u.role_id = r.role_id;
 
 -- @block Deleting User Test
 DELETE FROM users WHERE email = 'test@example.com';
+
+--@block Updating the admin Role
+UPDATE users SET role_id = (SELECT role_id FROM roles WHERE role_name = 'admin') WHERE email = 'admin@example.com';
