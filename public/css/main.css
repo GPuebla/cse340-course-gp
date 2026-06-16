@@ -496,6 +496,19 @@ footer p {
   text-decoration: none;
 }
 
+.btn-secondary {
+  background: var(--c-text-muted);
+  color: #fff;
+  border-color: var(--c-text-muted);
+}
+
+.btn-secondary:hover {
+  background: var(--c-text);
+  border-color: var(--c-text);
+  box-shadow: var(--sh-md);
+  text-decoration: none;
+}
+
 .btn-ghost {
   background: transparent;
   color: var(--c-text-muted);
@@ -622,6 +635,56 @@ textarea { resize: vertical; min-height: 120px; }
 .mb-4  { margin-bottom: var(--sp-4); }
 .mb-6  { margin-bottom: var(--sp-6); }
 .mb-8  { margin-bottom: var(--sp-8); }
+
+
+/* ─────────────────────────────────────────────────────────────
+   §14  TABLES
+   ───────────────────────────────────────────────────────────── */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-sm);
+  margin-bottom: var(--sp-6);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--tx-sm);
+  text-align: left;
+}
+
+.data-table th {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--sp-4) var(--sp-6);
+  border-bottom: 2px solid var(--c-border);
+}
+
+.data-table td {
+  padding: var(--sp-4) var(--sp-6);
+  border-bottom: 1px solid var(--c-border);
+  color: var(--c-text-muted);
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover td {
+  background: #fbfcff;
+  color: var(--c-text);
+}
+
+.data-table strong {
+  color: var(--c-text);
+}
 
 
 /* ─────────────────────────────────────────────────────────────

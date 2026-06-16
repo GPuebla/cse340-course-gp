@@ -1,35 +1,28 @@
 <%- include('partials/header') %>
     <main>
-        <h1>
-            <%= title %>
-        </h1>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% users.forEach(user=> { %>
+        <h1><%= title %></h1>
+        
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
                     <tr>
-                        <td>
-                            <%= user.user_id %>
-                        </td>
-                        <td>
-                            <%= user.name %>
-                        </td>
-                        <td>
-                            <%= user.email %>
-                        </td>
-                        <td>
-                            <%= user.role_name %>
-                        </td>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
                     </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td><strong><%= user.user_id %></strong></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><span class="badge"><%= user.role_name %></span></td>
+                        </tr>
                     <% }) %>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </main>
     <%- include('partials/footer') %>
