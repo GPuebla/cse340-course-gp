@@ -1,31 +1,47 @@
 import express from 'express';
 
 import { showHomePage } from '../controllers/index.js';
-import { showOrganizationsPage ,
+import {
+     showOrganizationsPage,
      showOrganizationDetailsPage,
-      showNewOrganizationForm,
-       processNewOrganizationForm,
-        organizationValidation,
-         showEditOrganizationForm,
-          processEditOrganizationForm } from '../controllers/organizations.js';
-import { showProjectsPage, 
+     showNewOrganizationForm,
+     processNewOrganizationForm,
+     organizationValidation,
+     showEditOrganizationForm,
+     processEditOrganizationForm
+} from '../controllers/organizations.js';
+import {
+     showProjectsPage,
      showProjectDetailsPage,
-      showNewProjectForm,
-      projectValidation,
-       processNewProjectForm,
-        showEditProjectForm,
-         processEditProjectForm } from '../controllers/projects.js';
-import { showCategoriesPage,
-          showAssignCategoriesForm ,
-          processAssignCategoriesForm,
-          showNewCategoryForm,
-          categoryValidation,
-          processNewCategoryForm,
-          showEditCategoryForm,
-          processEditCategoryForm,
-           showCategoryDetailsPage } from '../controllers/categories.js';
+     showNewProjectForm,
+     projectValidation,
+     processNewProjectForm,
+     showEditProjectForm,
+     processEditProjectForm
+} from '../controllers/projects.js';
+import {
+     showCategoriesPage,
+     showAssignCategoriesForm,
+     processAssignCategoriesForm,
+     showNewCategoryForm,
+     categoryValidation,
+     processNewCategoryForm,
+     showEditCategoryForm,
+     processEditCategoryForm,
+     showCategoryDetailsPage
+} from '../controllers/categories.js';
 import { testErrorPage } from '../controllers/errors.js';
-import { showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLoginForm, processLogout, requireLogin, requireRole, showDashboard } from '../controllers/users.js';
+import {
+     showUserRegistrationForm,
+     processUserRegistrationForm,
+     showLoginForm,
+     processLoginForm,
+     processLogout,
+     requireLogin,
+     requireRole,
+     showDashboard,
+     showUsers
+} from '../controllers/users.js';
 
 
 const router = express.Router();
@@ -68,6 +84,8 @@ router.post('/register', processUserRegistrationForm);
 router.get('/login', showLoginForm);
 router.post('/login', processLoginForm);
 router.get('/logout', processLogout);
+
+router.get('/users', requireRole('admin'), showUsers);
 
 router.get('/dashboard', requireLogin, showDashboard);
 
